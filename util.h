@@ -8,6 +8,9 @@
 #define SCRDIR "./games"
 #define OBJDIR "./Steam"
 
+#define SCRDIR "./games"
+#define OBJDIR "./Steam"
+
 char** category_list(char* str, int* N);
 
 
