@@ -41,6 +41,11 @@ char* categorize(char* category, char* filename){
     strcat(newdir, "/");
     strcat(newdir, filename);
     result = rename(filename, newdir);
+    if(!result){
+        printf("Error al crear la carpeta de categorización");
+    }
     return newdir;
 }
+
+
 
