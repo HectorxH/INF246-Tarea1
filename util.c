@@ -44,8 +44,3 @@ char* categorize(char* category, char* filename){
     return newdir;
 }
 
-
-
-int main(){
-    return 0;
-}
