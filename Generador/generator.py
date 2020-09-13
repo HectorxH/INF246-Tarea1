@@ -9,10 +9,10 @@ lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut gravida, qu
 
 df = pd.read_csv('games.csv')
 curpath = os.getcwd()
-if not os.path.exists(curpath + "/Juegos"):
-    os.makedirs(curpath + "/Juegos")
+if not os.path.exists(curpath + "/games"):
+    os.makedirs(curpath + "/games")
 for indes, row in df.iterrows():
-    with open(f'./Juegos/{row["Title"]}' + ".txt", 'w') as file:
+    with open(f'./games/{row["Title"]}' + ".txt", 'w') as file:
         file.write(row['Title'] + '\n')
         g = ', '.join(random.sample(generos, random.randint(1, 5)))
         file.write(g + '\n')
