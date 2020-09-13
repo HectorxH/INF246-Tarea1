@@ -3,9 +3,10 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-#define MAX_NAME 64
-#define MAX_PATH 256
+#define MAX_NAME 256
+#define MAX_PATH 512
 
 typedef struct{
     char name[MAX_NAME];
@@ -13,12 +14,12 @@ typedef struct{
     int n_categories;
 }Game;
 
-Game* newGame(char* path);
+Game* newGame(char* name, char* path, int n_categories);
 
 int compareGame(Game* g1, Game* g2);
 
 void freeGame(Game* g);
 
-void printGame(Game* g)
+void printGame(Game* g);
 
 #endif
