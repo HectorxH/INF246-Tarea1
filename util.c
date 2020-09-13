@@ -50,6 +50,7 @@ char* categorize(char* category, char* filename, char* source){
     return newdir;
 }
 
+// REVISAR MEMORIA
 void cleandir(char* path){
     DIR *dir;
     struct dirent *entry;
