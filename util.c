@@ -1,4 +1,7 @@
+#include <stdio.h>
+#include <unistd.h>
 #include "util.h"
+#include <sys/stat.h>
 
 char** category_list(char* str, int* N){
     int len = 1;
@@ -25,4 +28,24 @@ char** category_list(char* str, int* N){
     }
 
     return categories;
+}
+
+
+char* categorize(char* category, char* filename){
+    int result;
+    char* newdir = malloc(512);
+    strcat(newdir, OBJDIR);
+    strcat(newdir, "/");
+    strcat(newdir, category);
+    mkdir(newdir, 0700);
+    strcat(newdir, "/");
+    strcat(newdir, filename);
+    result = rename(filename, newdir);
+    return newdir;
+}
+
+
+
+int main(){
+    return 0;
 }

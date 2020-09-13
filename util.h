@@ -6,6 +6,9 @@
 
 #define MAX_STR_SIZE 64
 
+#define SCRDIR "./games"
+#define OBJDIR "./Steam"
+
 char** category_list(char* str, int* N);
 
 
