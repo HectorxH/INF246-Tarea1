@@ -10,7 +10,7 @@ char** category_list(char* str, int* N){
     char** categories = (char**)malloc(sizeof(char*)*len);
 
     int i = 0;
-    char* token = strtok(str, ", ");
+    char* token = strtok(str, ",");
     categories[i] = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
     strncpy(categories[i], token, MAX_STR_SIZE);
     i++;
