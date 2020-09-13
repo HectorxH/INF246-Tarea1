@@ -11,15 +11,13 @@ char** category_list(char* str, int* N){
 
     int i = 0;
     char* token = strtok(str, ", ");
-    char* category = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
-    strncpy(category, token, MAX_STR_SIZE);
-    categories[i] = category;
+    categories[i] = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
+    strncpy(categories[i], token, MAX_STR_SIZE);
     i++;
     token = strtok(NULL, ",");
     while(token != NULL) {
-        category = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
-        strncpy(category, token+1, MAX_STR_SIZE);
-        categories[i] = category;
+        categories[i] = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
+        strncpy(categories[i], token+1, MAX_STR_SIZE);
         i++;
         token = strtok(NULL, ",");
     }

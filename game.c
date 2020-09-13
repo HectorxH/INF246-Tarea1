@@ -20,6 +20,28 @@ void freeGame(Game* g){
 }
 
 void printGame(Game* g){
-    printf("WIP\n");
+    FILE* fp = fopen(g->path, "r");
+    if(fp == NULL){
+        printf("Error: Problema al abrir el archivo %s\n", g->path);
+        exit(0);
+    }
+
+    printf("----------------------------------------\n");
+    char buffer[MAX_PATH];
+    fgets(buffer, MAX_PATH-1, fp);
+    printf("Nombre:\n\t%s", buffer);
+
+    fgets(buffer, MAX_PATH-1, fp);
+    printf("Categorias:\n\t%s", buffer);
+
+    fgets(buffer, MAX_PATH-1, fp);
+    printf("Desarrollador:\n\t%s", buffer);
+
+    fgets(buffer, MAX_PATH-1, fp);
+    printf("Descripcion:\n\t%s", buffer);
+    printf("----------------------------------------\n\n");
+
+    fclose(fp);
+    
     return;
 }

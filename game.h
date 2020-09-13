@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <dirent.h>
 
 #define MAX_NAME 256
 #define MAX_PATH 512
