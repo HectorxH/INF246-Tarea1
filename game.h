@@ -17,7 +17,7 @@ typedef struct{
 
 Game* newGame(char* name, char* path, int n_categories);
 
-int compareGame(Game* g1, Game* g2);
+int compareGame(const void* g1, const void* g2);
 
 void freeGame(Game* g);
 

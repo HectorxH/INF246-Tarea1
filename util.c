@@ -1,6 +1,8 @@
 #include "util.h"
 
 char** category_list(char* str, int* N){
+    str[strlen(str)-1] = '\0';
+
     int len = 1;
     for(int i = 0; str[i] != '\0'; i++){
         if(str[i] == ',') len++;

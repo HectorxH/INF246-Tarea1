@@ -11,8 +11,8 @@ Game* newGame(char* name, char* path, int n_categories){
     return g;
 }
 
-int compareGame(Game* g1, Game* g2){
-    return g1->n_categories - g2->n_categories;
+int compareGame(const void* g1, const void* g2){
+    return (*(Game**)g1)->n_categories - (*(Game**)g2)->n_categories;
 }
 
 void freeGame(Game* g){
@@ -32,7 +32,7 @@ void printGame(Game* g){
     printf("Nombre:\n\t%s", buffer);
 
     fgets(buffer, MAX_PATH-1, fp);
-    printf("Categorias:\n\t%s", buffer);
+    printf("Categorias(%d):\n\t%s", g->n_categories, buffer);
 
     fgets(buffer, MAX_PATH-1, fp);
     printf("Desarrollador:\n\t%s", buffer);
