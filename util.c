@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "util.h"
 #include <sys/stat.h>
+#include <dirent.h>
 
 char** category_list(char* str, int* N){
     int len = 1;
@@ -49,4 +50,37 @@ char* categorize(char* category, char* filename, char* source){
     return newdir;
 }
 
+void cleandir(char* path){
+    DIR *dir;
+    struct dirent *entry;
+    if(!(dir = opendir(path))){
+        return;
+    }
+    while ((entry = readdir(dir)) != NULL) {
+        // ignora nombres con . y ..
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
+            continue;
+        // borra cualquier archivo que puede estar en carpeta
+        if(entry->d_type == DT_REG){
+            char *filepath = (char *) malloc(strlen(path) + strlen(entry->d_name) + 2);
+            strcpy(filepath , path);
+            strcat(filepath , "/");
+            strcat(filepath , entry->d_name);
+            remove(filepath);
+            free(filepath);
+        }
+        // borrar carpeta, llamada recursiva
+        else if(entry->d_type == DT_DIR){
+            char *newpath = (char *) malloc(strlen(path) + strlen(entry->d_name) + 2);
+            strcpy(newpath, path);
+            strcat(newpath, "/");
+            strcat(newpath, entry->d_name);
+            uninstall(newpath);
+            rmdir(newpath);
+            free(newpath);
+        }
+    }
+    rmdir(path);
+    closedir(dir);
+}
 
