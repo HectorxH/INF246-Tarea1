@@ -4,7 +4,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_STR_SIZE 64
+#define MAX_STR_SIZE 256
+#define SCRDIR "./games"
+#define OBJDIR "./Steam"
 
 #define SCRDIR "./games"
 #define OBJDIR "./Steam"
