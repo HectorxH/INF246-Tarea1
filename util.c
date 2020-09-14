@@ -39,8 +39,8 @@ char* categorize(char* category, char* filename, char* source){
     strcat(newdir, filename);
     // mueve el txt desde source a objective
     result = rename(source, newdir);
-    if(!result){
-        printf("Error al crear la carpeta de categorización");
+    if(result != 0){
+        printf("Error al crear la carpeta de categorización\n");
     }
     return newdir;
 }
