@@ -11,6 +11,9 @@
 #define OBJDIR "./Steam"
 
 int main(){
+
+    //Lectura de juegos
+
     cleandir(OBJDIR);
     mkdir(OBJDIR,0700);
     DIR* dir = opendir(SCRDIR);
@@ -68,15 +71,73 @@ int main(){
         free((void*)categories);
     }
 
+    //Ordenamiento de Juegos
+
     for(int i = 0; i < 5; i++){
         if(all_categories[i] == NULL) break;
-        printf("\n\n\n\n-------------------------------------------------------------------------------\n");
-        printf("\t\tCategoria: %s\n", all_categories[i]);
-        printf("-------------------------------------------------------------------------------\n\n");
         qsort(games_in_category[i]->list, games_in_category[i]->size, sizeof(Game*), compareGame);
-        for(int j = 0; j < games_in_category[i]->size; j++){
-            printGame(games_in_category[i]->list[j]);
+    }
+
+    //Inputs de Usuario
+
+    int input;
+    int curr_cat;
+    int flag = 1;
+    while(flag){
+        
+        if(flag == 1){
+            int i;
+            for(i = 0; i < 5; i++){
+                if(all_categories[i] == NULL) break;
+                printf("%d - %s/%s\n", i+1, OBJDIR, all_categories[i]);
+            }
+            printf("\n");
+
+            printf("Elige una categoria (1-%d): ", i);
+            scanf("%d", &input);
+
+            if(input > i || input < 0){
+                printf("Numero invalido, intentelo nuevamente...\n");
+                continue;
+            }
+
+            if(input == 0){
+                printf("\nChange Da World…\nMy Final Message.\nGoodbye.\n");
+                break;
+            }
+
+            curr_cat = input-1;
+            flag = 2;
         }
+        else if(flag == 2){
+            int j;
+            for(j = 0; j < games_in_category[curr_cat]->size; j++){
+                Game* g = games_in_category[curr_cat]->list[j];
+                printf("%d - %s : %s", j+1, g->path, g->name);
+            }
+            printf("\n");
+
+            printf("Elige una Juego (1-%d): ", j);
+            scanf("%d", &input);
+
+            if(input > j || input < 0){
+                printf("Numero invalido, intentelo nuevamente...\n");
+                continue;
+            }
+
+            if(input == 0){
+                flag = 1;
+                continue;
+            }
+
+            printGame(games_in_category[curr_cat]->list[input-1]);
+        }
+    }
+
+    //Liberar Memoria
+
+    for(int i = 0; i < 5; i++){
+        if(all_categories[i] == NULL) break;
         freeList(games_in_category[i]);
         free((void*)all_categories[i]);
     }
