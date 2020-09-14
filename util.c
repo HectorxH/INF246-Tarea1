@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <unistd.h>
 #include "util.h"
-#include <sys/stat.h>
-#include <dirent.h>
 
 char** category_list(char* str, int* N){
+    str[strlen(str)-1] = '\0';
+
     int len = 1;
     for(int i = 0; str[i] != '\0'; i++){
         if(str[i] == ',') len++;
@@ -14,23 +12,20 @@ char** category_list(char* str, int* N){
     char** categories = (char**)malloc(sizeof(char*)*len);
 
     int i = 0;
-    char* token = strtok(str, ", ");
-    char* category = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
-    strncpy(category, token, MAX_STR_SIZE);
-    categories[i] = category;
+    char* token = strtok(str, ",");
+    categories[i] = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
+    strncpy(categories[i], token, MAX_STR_SIZE);
     i++;
     token = strtok(NULL, ",");
     while(token != NULL) {
-        category = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
-        strncpy(category, token+1, MAX_STR_SIZE);
-        categories[i] = category;
+        categories[i] = (char*)malloc(sizeof(char)*MAX_STR_SIZE);
+        strncpy(categories[i], token+1, MAX_STR_SIZE);
         i++;
         token = strtok(NULL, ",");
     }
 
     return categories;
 }
-
 
 char* categorize(char* category, char* filename, char* source){
     int result;
@@ -76,7 +71,7 @@ void cleandir(char* path){
             strcpy(newpath, path);
             strcat(newpath, "/");
             strcat(newpath, entry->d_name);
-            uninstall(newpath);
+            cleandir(newpath);
             rmdir(newpath);
             free(newpath);
         }
@@ -84,4 +79,3 @@ void cleandir(char* path){
     rmdir(path);
     closedir(dir);
 }
-
