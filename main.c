@@ -11,6 +11,8 @@
 #define OBJDIR "./Steam"
 
 int main(){
+    cleandir(OBJDIR);
+    mkdir(OBJDIR,0700);
     DIR* dir = opendir(SCRDIR);
     if(dir == NULL){
         printf("Error: No se encuentra la carpeta ./games\n");
@@ -44,10 +46,8 @@ int main(){
         int n_categories;
         char** categories = category_list(str_categories, &n_categories);
 
-        Game* g = newGame(name, curr_path, n_categories);
-
-
-        // char* path = categorize(categories[0], dp->d_name, curr_path);
+        char* path = categorize(categories[0], dp->d_name, curr_path);
+         Game* g = newGame(name, path, n_categories);
 
         for(int i = 0; i < 5; i++){
             if(all_categories[i] == NULL){
@@ -80,7 +80,7 @@ int main(){
     }
 
     closedir(dir);
-
+    cleandir(SCRDIR);
 
     return 0;
 }
