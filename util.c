@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
 #include "util.h"
-#include <sys/stat.h>
-#include <dirent.h>
 
 char** category_list(char* str, int* N){
     str[strlen(str)-1] = '\0';
@@ -75,7 +71,7 @@ void cleandir(char* path){
             strcpy(newpath, path);
             strcat(newpath, "/");
             strcat(newpath, entry->d_name);
-            uninstall(newpath);
+            cleandir(newpath);
             rmdir(newpath);
             free(newpath);
         }
@@ -83,3 +79,4 @@ void cleandir(char* path){
     rmdir(path);
     closedir(dir);
 }
+
