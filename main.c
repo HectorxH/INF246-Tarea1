@@ -47,7 +47,8 @@ int main(){
         char** categories = category_list(str_categories, &n_categories);
 
         char* path = categorize(categories[0], dp->d_name, curr_path);
-         Game* g = newGame(name, path, n_categories);
+        Game* g = newGame(name, path, n_categories);
+        free((void*)path);
 
         for(int i = 0; i < 5; i++){
             if(all_categories[i] == NULL){
@@ -77,6 +78,7 @@ int main(){
             printGame(games_in_category[i]->list[j]);
         }
         freeList(games_in_category[i]);
+        free((void*)all_categories[i]);
     }
 
     closedir(dir);

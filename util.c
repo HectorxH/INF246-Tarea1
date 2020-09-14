@@ -29,8 +29,8 @@ char** category_list(char* str, int* N){
 
 char* categorize(char* category, char* filename, char* source){
     int result;
-    char* newdir = malloc(512);
-    strcat(newdir, OBJDIR);
+    char* newdir = malloc(sizeof(char)*512);
+    strncpy(newdir, OBJDIR, 511);
     strcat(newdir, "/");
     strcat(newdir, category);
     // crea categoria nueva, si ya existe no hace nada
@@ -39,8 +39,8 @@ char* categorize(char* category, char* filename, char* source){
     strcat(newdir, filename);
     // mueve el txt desde source a objective
     result = rename(source, newdir);
-    if(!result){
-        printf("Error al crear la carpeta de categorización");
+    if(result != 0){
+        printf("Error al crear la carpeta de categorización\n");
     }
     return newdir;
 }
