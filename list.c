@@ -26,7 +26,6 @@ List* newList(){
  *
  *   Returns: void, no retorna nada.
  */
-
 void pushList(List* l, Game* g){
     if(l->size >= l->max_size){
         l->max_size *= 2;
