@@ -13,9 +13,6 @@
 #define SCRDIR "./games"
 #define OBJDIR "./Steam"
 
-#define SCRDIR "./games"
-#define OBJDIR "./Steam"
-
 char** category_list(char* str, int* N);
 
 char* categorize(char* category, char* filename, char* source);
