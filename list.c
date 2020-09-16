@@ -7,7 +7,7 @@
  *
  *   No tiene parametros.
  *
- *   Returns: List*, nueva lista de structs creada.
+ *   Returns: List*, nueva lista creada.
  */
 List* newList(){
     List* l = (List*)malloc(sizeof(List));
