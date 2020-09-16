@@ -3,7 +3,7 @@
 /*
  * Function: newList
  * ----------------------------
- *   Crea una lista de structs para contener los juegos.
+ *   Crea una estructura l para almacenar listas de juegos.
  *
  *   No tiene parametros.
  *
@@ -22,7 +22,7 @@ List* newList(){
  * ----------------------------
  *   Permite insertar un struct de juego en la lista.
  *
- *   List* l: lista de structs.
+ *   List* l: lista original.
  *
  *   Returns: void, no retorna nada.
  */
@@ -40,7 +40,7 @@ void pushList(List* l, Game* g){
  * ----------------------------
  *   Ajusta el tamaño de la lista según su tamaño real.
  *
- *   List* l: lista de structs.
+ *   List* l: lista original.
  *
  *   Returns: void, no retorna nada.
  */
@@ -52,9 +52,9 @@ void fitList(List* l){
 /*
  * Function: freeList
  * ----------------------------
- *   Libera la memoria ocupada por la lista.
+ *   Libera la memoria ocupada por la lista y todos sus campos.
  *
- *   List* l: lista de structs.
+ *    List* l: lista original.
  *
  *   Returns: void, no retorna nada.
  */
