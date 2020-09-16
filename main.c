@@ -41,11 +41,11 @@ int main(){
             exit(0);
         }
 
-        // Se guarda el nombre de juego
+        // Se guarda el nombre de juego.
         char name[MAX_NAME];
         fgets(name, MAX_NAME-1, fp);
 
-        // Se guarda el string de categorias de juego
+        // Se guarda el string de categorias de juego.
         char str_categories[MAX_STR_SIZE];
         fgets(str_categories, MAX_STR_SIZE-1, fp);
 
@@ -94,17 +94,21 @@ int main(){
     int input;
     int curr_cat;
     int flag = 1;
+    int auxinput;
     while(flag){
         // Si flag es 1, el usuario debe ver la lista de categorias.
         if(flag == 1){
             int i;
+            printf("\n+============================CATEGORÍAS=================================+\n");
+             printf("%-25s%-17s%-30s\n", "Número de categoria", "Categoría", "Dirección completa");
+            printf("+=======================================================================+\n");
             for(i = 0; i < 5; i++){
                 if(all_categories[i] == NULL) break;
-                printf("%d - %s/%s\n", i+1, OBJDIR, all_categories[i]);
+                printf("%-25d%-17s%s/%s\n", i+1, all_categories[i], OBJDIR, all_categories[i]);
             }
 
             printf("\n");
-            printf("Elige una categoria (1-%d): ", i);
+            printf("Elige una categoria (1-%d)\nIngrese 0 para salir de la aplicación.\nSu elección: ", i);
             scanf("%d", &input);
 
             if(input > i || input < 0){
@@ -122,14 +126,19 @@ int main(){
         // Si flag es 2, el usuario debe ver juegos ordenados de la categoria elegida.
         else if(flag == 2){
             int j;
+            auxinput = 1;
+            printf("\n\nCATEGORIA: %s", all_categories[curr_cat]);
+            printf("\n+======================================JUEGOS===========================================+\n");
+            printf("%-20s%-32s%-25s\n", "Número de juego", "Cantidad de categorías", "Nombre");
+            printf("+=======================================================================================+\n");
             // Se muestran los juegos según la categoría actual elegida.
             for(j = 0; j < games_in_category[curr_cat]->size; j++){
                 Game* g = games_in_category[curr_cat]->list[j];
-                printf("%d - %s : %s", j+1, g->path, g->name);
+                printf("%-20d%-30d%-25s\n", j+1,g->n_categories, g->name);
             }
 
             printf("\n");
-            printf("Elige una Juego (1-%d): ", j);
+            printf("Elige una Juego (1-%d)\nIngrese 0 para volver a la lista de categorías.\nSu elección: ", j);
             scanf("%d", &input);
 
             if(input > j || input < 0){
@@ -143,6 +152,10 @@ int main(){
             }
             // Se muestra la información de juego elegido.
             printGame(games_in_category[curr_cat]->list[input-1]);
+            while(auxinput){
+                printf("Ingrese 0 para salir de la vista de juego: ");
+                scanf("%d", &auxinput);
+            }
         }
     }
 
