@@ -44,7 +44,8 @@ SOBRE LAS LLAMADAS AL SISTEMA
 > https://man7.org/linux/man-pages/man2/readdir.2.html
 
 	☆ Para leer los archivos se utilizan las funciones fopen(), fgets() y fclose() que hacen las 
-	llamadas al sistema correspondientes (son funciones wrapper para syscalls como, por ejemplo, open(), read(), close()).
+	llamadas al sistema correspondientes.
+	(son funciones wrapper para syscalls como, por ejemplo, open(), read(), close()).
 +---------------------------------------------------------+
 SOBRE LA APLICACIÓN DE LA CONSOLA
 	☆ La aplicación de consola tiene 2 "fases". Se utiliza el input de usuario para mostrar los 
