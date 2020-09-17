@@ -27,6 +27,25 @@ SOBRE LOS ARCHIVOS DE JUEGOS Y LAS CARPETAS
 	(ej. Payday2 puede ser un Visual Novel porque así fue generado etc.)
 
 +---------------------------------------------------------+
+SOBRE LAS LLAMADAS AL SISTEMA
+	☆ El programa utiliza "mkdir()" para crear directorios.
+> https://man7.org/linux/man-pages/man2/mkdir.2.html
+	☆ El programa utiliza "rmdir()" para borrar directorios vacios 
+	(para limpiar ./Steam si ya existe antes de crear uno nuevo y borrar ./games vacio)
+> https://man7.org/linux/man-pages/man2/rmdir.2.html
+	☆ El programa utiliza "rename()" para mover los archivos entre directorios.(para categorizar)
+> https://man7.org/linux/man-pages/man2/rename.2.html
+
+	☆ El programa utiliza "remove()" para borrar los archivos .txt.
+	(para limpiar ./Steam si ya existe antes de crear uno nuevo)
+> https://linux.die.net/man/3/remove	
+	☆ El programa hace uso de libreria <dirent.h> para leer y reconocer directorios
+	☆ El programa utiliza "readdir()" para leer los directorios.
+> https://man7.org/linux/man-pages/man2/readdir.2.html
+
+	☆ Para leer los archivos se utilizan las funciones fopen(), fgets() y fclose() que hacen las 
+	llamadas al sistema correspondientes (son funciones wrapper para syscalls como, por ejemplo, open(), read(), close()).
++---------------------------------------------------------+
 SOBRE LA APLICACIÓN DE LA CONSOLA
 	☆ La aplicación de consola tiene 2 "fases". Se utiliza el input de usuario para mostrar los 
 	contenidos correspondientes.
