@@ -25,7 +25,6 @@ SOBRE LOS ARCHIVOS DE JUEGOS Y LAS CARPETAS
 	☆ Se entrega los .txt generados a partir de un .csv de manera aleatoria. 
 	Las categorías de cada juego no necesariamente reflejan la realidad 
 	(ej. Payday2 puede ser un Visual Novel porque así fue generado etc.)
-
 +---------------------------------------------------------+
 SOBRE LAS LLAMADAS AL SISTEMA
 	☆ El programa utiliza "mkdir()" para crear directorios.
