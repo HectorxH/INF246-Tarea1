@@ -12,7 +12,7 @@
 SOBRE MAKEFILE
 (los comandos se anotan en comillas para diferenciarlas del texto simple)
 	☆ Ingresar "make" en la consola para ejecutar el makefile.
-	☆ Ingresar “./main.out” para ejecutar el código.
+	☆ Ingresar "./main.out" para ejecutar el código.
 	☆ Ingresar "make clean" en la consola para borrar los archivos .o y .out
 	☆ Para evitar los conflictos con <dirent.h> se utiliza gnu11 para la compilación.
 +---------------------------------------------------------+
