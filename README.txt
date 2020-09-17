@@ -48,7 +48,7 @@ SOBRE LAS LLAMADAS AL SISTEMA
 	(son funciones wrapper para syscalls como, por ejemplo, open(), read(), close()).
 +---------------------------------------------------------+
 SOBRE LA APLICACIÓN DE LA CONSOLA
-	☆ La aplicación de consola tiene 2 "fases". Se utiliza el input de usuario para mostrar los 
+	☆ La aplicación de consola tiene 3 "fases". Se utiliza el input de usuario para mostrar los 
 	contenidos correspondientes.
 	☆ Fase 1: Lista de categorías. Se despliega la lista de categorías disponibles. El
 	usuario debe escoger una de ellas, ingresado un entero de 1 a 5. En caso de ingresar
@@ -58,4 +58,7 @@ SOBRE LA APLICACIÓN DE LA CONSOLA
 	☆ Fase 2: Lista de juegos. Se despliega la lista de juegos ordenada según el número de categorías.
 	El usuario puede acceder a la información de juego al ingresar su número. Se puede volver a la lista
 	de las categorías al ingresar 0.
+	☆ Fase 3: Información sobre el juego eligido. El usuario que ingresa un número válido de juego según
+	la información mostrada por pantalla en la Fase 2 puede ver los datos de juego. Para ingresar a la lista
+	de juefos el usuario debe ingresar 0.
 +---------------------------------------------------------+
