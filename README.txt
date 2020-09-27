@@ -26,6 +26,13 @@ SOBRE LOS ARCHIVOS DE JUEGOS Y LAS CARPETAS
 	Las categorías de cada juego no necesariamente reflejan la realidad 
 	(ej. Payday2 puede ser un Visual Novel porque así fue generado etc.)
 +---------------------------------------------------------+
+SOBRE EL GENERADOR 
+	☆ Se entrega un generador escrito en Python junto con .csv base
+	☆ Para generar más casos de prueba basta correr "python3 generator.py"
+	☆ El generador no asegura que hayan 2 juegos por categoría ni que hayan 5 juegos con más de una categoría. 
+	El caso ya generado sí cumple este criterio. En caso de querer generar más casos casos tener en cuenta que la regla 
+	no necesariamente se va a cumplir.
++---------------------------------------------------------+
 SOBRE LAS LLAMADAS AL SISTEMA
 	☆ El programa utiliza "mkdir()" para crear directorios.
 > https://man7.org/linux/man-pages/man2/mkdir.2.html
